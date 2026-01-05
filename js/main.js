@@ -9,10 +9,77 @@
     const accordionItems = document.querySelectorAll('.accordion__item');
     const contactForm = document.getElementById('contact-form');
     const toast = document.querySelector('.toast');
+    const brandVideo = document.getElementById('brand-video');
+    const brandLogo = document.getElementById('brand-logo');
+    const brandLink = document.querySelector('.brand');
+    const heroVideo = document.getElementById('hero-intro');
+    const skipIntroButton = document.getElementById('skip-intro');
+    const heroLogoButton = document.getElementById('hero-logo');
 
     const whatsappNumber = '525575163124';
 
     const buildWhatsAppLink = (message) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    const showBrandLogo = () => {
+        if (brandVideo && !brandVideo.classList.contains('is-hidden')) {
+            brandVideo.pause();
+            brandVideo.classList.add('is-hidden');
+        }
+
+        if (brandLogo) {
+            brandLogo.hidden = false;
+        }
+    };
+
+    if (brandVideo) {
+        const playPromise = brandVideo.play();
+        if (playPromise) {
+            playPromise.catch(showBrandLogo);
+        }
+
+        brandVideo.addEventListener('ended', showBrandLogo);
+        brandVideo.addEventListener('error', showBrandLogo);
+    } else {
+        showBrandLogo();
+    }
+
+    brandLink?.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const showHeroLogo = () => {
+        if (heroVideo && !heroVideo.classList.contains('is-hidden')) {
+            heroVideo.pause();
+            heroVideo.classList.add('is-hidden');
+        }
+
+        if (skipIntroButton) {
+            skipIntroButton.hidden = true;
+        }
+
+        if (heroLogoButton) {
+            heroLogoButton.hidden = false;
+        }
+    };
+
+    if (heroVideo) {
+        const playPromise = heroVideo.play();
+        if (playPromise) {
+            playPromise.catch(showHeroLogo);
+        }
+
+        heroVideo.addEventListener('ended', showHeroLogo);
+        heroVideo.addEventListener('error', showHeroLogo);
+    } else {
+        showHeroLogo();
+    }
+
+    skipIntroButton?.addEventListener('click', showHeroLogo);
+
+    heroLogoButton?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // Menú móvil
     navToggle?.addEventListener('click', () => {

@@ -35,7 +35,17 @@
 
     <header class="site-header" id="inicio">
         <div class="container header__inner">
-            <div class="logo">Alta-Volt México</div>
+            <a class="brand" href="#inicio" aria-label="Inicio Alta-Volt México">
+                <video
+                    id="brand-video"
+                    class="brand__video"
+                    src="assets/img/logovideo-altavolt.mp4"
+                    autoplay
+                    muted
+                    playsinline
+                ></video>
+                <img id="brand-logo" class="brand__logo" src="assets/img/logo-altavolt.png" alt="Alta-Volt México" hidden>
+            </a>
             <nav class="nav" aria-label="Secciones principales">
                 <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">Menú</button>
                 <ul class="nav__list" id="nav-menu">
@@ -68,8 +78,21 @@
                     </ul>
                     <div class="hero__trust">Atendemos: Casas • Departamentos • Locales • Oficinas</div>
                 </div>
-                <div class="hero__panel" aria-hidden="true">
-                    <div class="panel__placeholder">TODO: reemplazar con foto real en assets/img</div>
+                <div class="hero__panel">
+                    <div class="hero__media">
+                        <video
+                            id="hero-intro"
+                            class="hero__video"
+                            src="assets/img/logovideo-altavolt.mp4"
+                            autoplay
+                            muted
+                            playsinline
+                        ></video>
+                        <button id="skip-intro" class="hero__skip" type="button" aria-label="Saltar introducción">Saltar intro</button>
+                        <button id="hero-logo" class="hero__logo-button" type="button" hidden>
+                            <img src="assets/img/logo-altavolt.png" alt="Alta-Volt México" class="hero__logo">
+                        </button>
+                    </div>
                     <div class="panel__tag">Seguridad eléctrica</div>
                 </div>
             </div>
